@@ -10,7 +10,7 @@ import gzip
 import pandas as pd
 from io import BytesIO
 
-states=['NC','SC','WV','MD','VA','PA','OH','IN','KY']
+states=['NC','SC','MD','VA','DE','PA','CT','RI','MA']
 
 for j in range(2010,2019):
     
@@ -25,27 +25,3 @@ for j in range(2010,2019):
 
 
 
-#%% 
-# creat a gz file
-import gzip
-import shutil
-with open('test.csv', 'rb') as f_in:
-    with gzip.open('test.csv.gz', 'wb') as f_out:
-        shutil.copyfileobj(f_in, f_out)
-        
-        
-df=pd.read_csv('test.csv.gz',compression='gzip',chunksize=1000000)
-pd_df = pd.concat(df)
-
-
-
-from dask import dataframe as dd
-dask_df = dd.read_csv('test.csv.gz',compression='gz')
-
-#%%
-import os
-os.chdir('C:/Users/wills/Documents/DataAxle')
-import pandas as pd
-import numpy as np
-
-df=pd.read_csv('US_Consumer_5_File_2010.csv',nrows=10000)
